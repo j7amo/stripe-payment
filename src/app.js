@@ -4,9 +4,8 @@ require('express-async-errors');
 const express = require('express');
 
 const app = express();
-const stripeController = require('./controllers/stripeController');
-
 // controller
+const stripeController = require('./controllers/stripeController');
 
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
@@ -15,9 +14,9 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.json());
 app.use(express.static('./public'));
 
+// stripe
 app.post('/stripe', stripeController);
 
-// stripe
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
